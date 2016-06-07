@@ -1,6 +1,10 @@
 -- This is a simple script that will demonstrate 5 different FHIR operation calls to the FHIR server channel.
 -- The new patients that will be created (in both json and xml) are located in FhirPatient.lua
 
+-- This script also requires the the "FHIR Server" to be running
+
+-- http://help.interfaceware.com/v6/fhir-client-and-server
+
 local FhirPatients = require "FhirPatient"
 
 local function buildRequestUrlBeginning()
@@ -13,8 +17,6 @@ local function buildRequestUrlBeginning()
    trace(Url)
    return Url
 end
-
-
 
 
 function main()
