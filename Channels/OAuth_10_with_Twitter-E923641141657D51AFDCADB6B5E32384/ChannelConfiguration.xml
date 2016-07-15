@@ -10,7 +10,7 @@
    <from_http
       type="mapper"
       guid="OAuth_10_with_Twitter-FromHTTP-BySFe7atclIgtH"
-      commit_id="150203730ddf98cccc6d924bf858ee99a0f3f29b"
-      commit_comment="Import Translators: importing baseline latest code"
+      commit_id="2be1c20faf00b1a8fd64ffefe05be36a7b94496e"
+      commit_comment="ready for repo"
       mapper_url_path="twitter"/>
 </channel>

@@ -1,7 +1,7 @@
 <channel
    name="Query Iguana User Role/Email"
    guid="D1A60779BD66619168E579ABB3F86D42"
-   description="This shows the usage of a module that can be used to see if a particular user has role as defined by an Iguana configuration and what their email address is.&#xD;&#xA;&#xD;&#xA;This would be useful if you wanted to alter the course of a script like a web service based on a user name defined in the Iguana configuration file."
+   description="This shows the usage of a module that can be used to see if a particular user has role as defined by an Iguana configuration and what their email address is.&#xD;&#xA;&#xD;&#xA;This would be useful if you wanted to alter the course of a script like a web service based on a user name defined in the Iguana configuration file.&#xD;&#xA;&#xD;&#xA;http://help.interfaceware.com/v6/query-iguana-user-roleemail"
    start_automatically="true"
    logging_level="1"
    use_message_filter="false">
@@ -9,8 +9,17 @@
    </to_channel>
    <from_mapper
       guid="See_if_Iguana_user_has_role-From-CAjWcvFmR4bxlw"
-      commit_id="150203730ddf98cccc6d924bf858ee99a0f3f29b"
-      commit_comment="Import Translators: importing baseline latest code"
+      commit_id="2a76ec306764a7234ef1261aa3c6f025bcfb4de6"
+      commit_comment="asdf"
       poll_time="10000">
    </from_mapper>
+   <message_filter
+      filter_after_logging="false"
+      log_pre_post_filter_message="true"
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true">
+   </message_filter>
 </channel>

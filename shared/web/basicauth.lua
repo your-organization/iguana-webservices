@@ -8,6 +8,10 @@
 
 -- This module takes the user name and password from the user and validates the user id
 -- against the local Iguana user id.  If an invalid user name and password is given it won't be possilble to login.
+
+-- http://help.interfaceware.com/v6/basic-authentication
+-- http://help.interfaceware.com/v6/webservice-with-permissions
+
 local basicauth = {}
  
 local function getCreds(Headers)
@@ -72,6 +76,10 @@ local basicauth_isAuthorized=[[{
       {
          "Title": "Basic authentication",
          "Link": "http://help.interfaceware.com/v6/basic-authentication"
+      },
+      {
+         "Title": "The basicauth.lua module on github",
+         "Link": "https://github.com/interfaceware/iguana-webservices/blob/master/shared/web/basicauth.lua"
       }
    ],
    "Title": "basicauth.isAuthorized",
@@ -107,7 +115,11 @@ local basicauth_getCredentials=[[{
    "SeeAlso": [
       {
          "Title": "Basic authentication",
-         "Link": "hthttp://help.interfaceware.com/v6/basic-authentication"
+         "Link": "http://help.interfaceware.com/v6/basic-authentication"
+      },
+      {
+         "Title": "The basicauth.lua module on github",
+         "Link": "https://github.com/interfaceware/iguana-webservices/blob/master/shared/web/basicauth.lua"
       }
    ],
    "Title": "basicauth.getCredentials",
@@ -133,6 +145,10 @@ local basicauth_requireAuthorization=[[{
       {
          "Title": "Basic authentication",
          "Link": "http://help.interfaceware.com/v6/basic-authentication"
+      },
+      {
+         "Title": "The basicauth.lua module on github",
+         "Link": "https://github.com/interfaceware/iguana-webservices/blob/master/shared/web/basicauth.lua"
       }
    ],
    "Title": "basicauth.requireAuthorization",

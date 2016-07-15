@@ -4,6 +4,7 @@
 
 -- http://help.interfaceware.com/category/building-interfaces/repositories/builtin-iguana-webservices
 -- http://help.interfaceware.com/category/building-interfaces/repositories/builtin-iguana-excel
+-- http://help.interfaceware.com/v6/webservice-with-permissions
 
 local user = require "iguana.user"
 
@@ -85,6 +86,7 @@ help.set{input_function=method.actions, help_data=json.parse{data=ActionHelp}}
 function method:dispatch(T)
    local Request = T.path:sub(self._baseurllength)
    local User = user.open()
+   trace(self)
    for K,Group in ipairs(self._priority) do
       trace(K,Group)
       trace(self._actions[Group])

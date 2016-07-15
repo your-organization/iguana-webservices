@@ -10,28 +10,88 @@ oauth.readCertificate = function(Path)
    return Data
 end
 
+-- Help documentation for oauth.readCertificate
+local CertHelp = {
+   Title = "oauth.readCertificate",
+   Usage = "oauth.readCertificate{path=&lt;value&gt;}",
+   Desc  = [[Read in a specified certificate file, close it and return its total contents 
+(the file name should include the full path)]],
+   ParameterTable = false,
+
+   Parameters   = {
+      { path  = { Desc = 'Certificate file name and path <u>string</u>.'        }},
+   },
+
+   Returns   = {
+      { Desc = 'Contents of certificate file <u>string</u>' }
+   }
+}
+
+help.set{input_function=oauth.readCertificate, help_data=CertHelp}
+
+
 -- Generate a nonce. See https://en.wikipedia.org/wiki/Cryptographic_nonce.
 oauth.makeNonce = function(InputData)
    return filter.hex.enc(crypto.digest{data=tostring(InputData), algorithm='sha1'})
 end
 
+-- Help documentation for oauth.makeNonce
+local NonceHelp = {
+   Title = "oauth.makeNonce",
+   Usage = "oauth.makeNonce{data=&lt;value&gt;}",
+   Desc  = [[Generate a nonce. See <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">Wikipedia Cryptographic nonce</a>]],
+   ParameterTable = false,
+
+   Parameters   = {
+      { data  = { Desc = 'Data to convert to a cryptographic nonce <u>string</u>.'        }},
+   },
+
+   Returns   = {
+      { Desc = 'Generated cryptographic nonce <u>string</u>' }
+   }
+}
+
+help.set{input_function=oauth.makeNonce, help_data=NonceHelp}
+
+
 -- Using + instead of %20 is outdated and breaks OAuth. This ensures that
 -- spaces are encoded as %20 and not +. The proper version is known as
 -- percent encoding.
-local function percentEncode(Data)
+function oauth.percentEncode(Data)
    local StrictResultData = filter.uri.enc(Data)
    StrictResultData = StrictResultData:gsub("+", "%%20")
    return StrictResultData
 end
+
+-- Help documentation for oauth.percentEncode
+local EncodeHelp = {
+   Title = "oauth.percentEncode",
+   Usage = "oauth.percentEncode{data=&lt;value&gt;}",
+   Desc  = [[Ensures that spaces are correctly encoded as %20 and not +.                        
+<br><br>Using + instead of %20 is outdated
+and breaks OAuth. The proper version (using %20) is known as percent encoding]],
+   ParameterTable = false,
+
+   Parameters   = {
+      { data  = { Desc = 'The string to be converted <u>string</u>.'        }},
+   },
+
+   Returns   = {
+      { Desc = 'A percent encoded string <u>string</u>' }
+   }
+}
+
+help.set{input_function=oauth.percentEncode, help_data=EncodeHelp}
+
 
 -- The following steps are specified by the OAauth RFC for building
 -- the parameter string to be used in the signature base.
 -- See https://tools.ietf.org/html/rfc5849#section-3.4.1.3.2
 local function makeOAuthParamStr(Table)
    -- 1. URI encode the keys and values.
-   EncodedTable = {}
+   local EncodedTable = {}
    for k,v in pairs(Table) do
-      EncodedTable[percentEncode(k)] = percentEncode(tostring(v))
+      EncodedTable[oauth.percentEncode(k)] = oauth.percentEncode(tostring(v))
    end
 
    -- 2. Sort alphabetically by key. In Lua this requires building an
@@ -81,9 +141,9 @@ oauth.buildSignature = function(Params)
 
    -- 2. Build the signature base string.
    local SignatureBase = string.format("%s&%s&%s",
-      Params.method,                      -- 2.a Start with the HTTP method (uppercase).
-      percentEncode(Params.url),        -- 2.b Append the percent encoded URL.
-      percentEncode(OAuthParamString) -- 2.c Append the percent encoded argument string.
+      Params.method,                  -- 2.a Start with the HTTP method (uppercase).
+      oauth.percentEncode(Params.url),      -- 2.b Append the percent encoded URL.
+      oauth.percentEncode(OAuthParamString) -- 2.c Append the percent encoded argument string.
    )
    
    -- 3. Read the private key off disk.
@@ -107,6 +167,29 @@ oauth.buildSignature = function(Params)
    return filter.base64.enc(Sig)
 end
 
+-- Help documentation for oauth.buildSignature
+local SignatureHelp = {
+   Title = "oauth.buildSignature",
+   Usage = "oauth.buildSignature{nonce=&lt;value&gt;, consumer_key=&lt;value&gt;, signature_method=&lt;value&gt;, timestamp=&lt;value&gt;, access_token=&lt;value&gt;}",
+   Desc  = "Create an Oauth authorization signature used for signing (encoded as Base64)",
+   ParameterTable = true,
+
+   Parameters = {
+      { nonce            = { Desc = 'Nonce <u>string</u>.'                        }},
+      { consumer_key     = { Desc = 'Consumer key <u>table</u>.'                  }},
+      { signature_method = { Desc = 'Signature method <u>string</u>.'             }},
+      { timestamp        = { Desc = 'Timestamp as Unix Epoch time <u>integer</u>.'}},
+      { access_token     = { Desc = 'Access token <u>date</u>.'                   }},
+   },
+
+   Returns   = {
+      { Desc = 'Base64 encoded signature <u>string</u>' }
+   }
+}
+
+help.set{input_function=oauth.buildSignature, help_data=SignatureHelp}
+
+
 oauth.buildAuthHeader = function(Params)
    -- 5. Build the header string. Note that the header string contains
    --    oauth_signature but the sorted argument string does not.
@@ -119,10 +202,10 @@ oauth.buildAuthHeader = function(Params)
                              .. 'oauth_timestamp="%s", '
                              .. 'oauth_version="1.0"'
    -- 5.a Substitute the proper values.
-   AuthHeaderValue = string.format(AuthHeaderFormat,
+   local AuthHeaderValue = string.format(AuthHeaderFormat,
       Params.consumer_key,
       Params.nonce,
-      percentEncode(Params.signature),
+      oauth.percentEncode(Params.signature),
       Params.access_token,
       Params.signature_method,
       Params.timestamp
@@ -131,7 +214,29 @@ oauth.buildAuthHeader = function(Params)
    return "Authorization: " .. AuthHeaderValue
 end
 
--- This is useful in other places also.
-oauth.percentEncode = percentEncode
+-- Help documentation for oauth.buildAuthHeader
+local AuthHeaderHelp = {
+   Title = "oauth.buildAuthHeader",
+   Usage = [[oauth.buildSignature{nonce=&lt;value&gt;, consumer_key=&lt;value&gt;, signature=&lt;value&gt;, 
+                     signature_method=&lt;value&gt;, timestamp=&lt;value&gt;, access_token=&lt;value&gt;}]],
+   Desc  = "Build an Oauth authorization header",
+   ParameterTable = true,
+
+   Parameters   = {
+      { nonce            = { Desc = 'Nonce <u>string</u>.'                        }},
+      { consumer_key     = { Desc = 'Consumer key <u>table</u>.'                  }},
+      { signature        = { Desc = 'Signature <u>string</u>.'                    }},
+      { signature_method = { Desc = 'Signature method <u>string</u>.'             }},
+      { timestamp        = { Desc = 'Timestamp as Unix Epoch time <u>integer</u>.'}},
+      { access_token     = { Desc = 'Access token <u>date</u>.'                   }},
+   },
+
+   Returns   = {
+      { Desc = 'Oauth header <u>string</u>' }
+   }
+}
+
+help.set{input_function=oauth.buildAuthHeader, help_data=AuthHeaderHelp}
+
 
 return oauth

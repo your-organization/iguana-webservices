@@ -4,8 +4,10 @@
         "oauth.oauth",
         "xero.api"
     ],
-    "OtherDependencies": [],
-    "timestamp": "1468230745",
+    "OtherDependencies": [
+        "privatekey.pem"
+    ],
+    "timestamp": "1468607128",
     "version_info": {
         "build": 0,
         "major": 6,

@@ -10,8 +10,8 @@
    <from_http
       type="mapper"
       guid="FHIR_Service_Example-FromHTTP-bUNW5PaXNE11Al"
-      commit_id="150203730ddf98cccc6d924bf858ee99a0f3f29b"
-      commit_comment="Import Translators: importing baseline latest code"
+      commit_id="2a4679b1cf5c78a73a0cd56bb26db930e5870fa3"
+      commit_comment="latest"
       mapper_url_path="fhir/"/>
    <message_filter
       filter_after_logging="false"

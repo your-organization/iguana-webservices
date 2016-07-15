@@ -10,8 +10,8 @@
    <from_http
       type="mapper"
       guid="Oauth_10_with_Xero-FromHTTP-bvYsDQ6aH8alnR"
-      commit_id="150203730ddf98cccc6d924bf858ee99a0f3f29b"
-      commit_comment="Import Translators: importing baseline latest code"
+      commit_id="235078e8ac5c54e6412b4974d96c76aeed048021"
+      commit_comment="help done"
       mapper_url_path="xero/"/>
    <message_filter
       filter_after_logging="false"

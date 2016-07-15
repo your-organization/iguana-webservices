@@ -1,7 +1,7 @@
 <channel
    name="Call a webservice"
    guid="59C3BE53E7ED01ED7AF738764BE57BA4"
-   description="This example calls a webservice for the weather and outputs the data in a simple page."
+   description="This example calls a webservice for the weather and outputs the data in a simple page.&#xD;&#xA;&#xD;&#xA;http://help.interfaceware.com/v6/call-a-webservice"
    start_automatically="true"
    logging_level="1"
    use_message_filter="false">
@@ -10,8 +10,8 @@
    <from_http
       type="mapper"
       guid="Call_a_webservice-FromHTTP-JAp3PFjeWtDuN1"
-      commit_id="150203730ddf98cccc6d924bf858ee99a0f3f29b"
-      commit_comment="Import Translators: importing baseline latest code"
+      commit_id="69d54dd48e215d5b859c4d2b817c336422bcee80"
+      commit_comment="comments etc"
       mapper_url_path="weather/"/>
    <message_filter
       filter_after_logging="false"

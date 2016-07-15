@@ -1,19 +1,21 @@
 -- This example shows how to use the Twitter API using OAuth 1.0.
--- For more information see:
--- http://help.interfaceware.com/v6/oauth-with-xero 
 
 -- This example illustrates:
 --   Fetching a list of users with the Xero API
 --   Signing an OAuth 1 request
 
+-- http://help.interfaceware.com/v6/oauth-with-xero 
+
 local Xero = require 'xero.api'
 
 local ArticleLink = "http://help.interfaceware.com/v6/oauth-with-xero"
 
-function work()
+local function work()
    local C = Xero:connect{
-      consumer_key    = 'Your key',
-      consumer_secret = 'Your secret',
+--      consumer_key    = 'Your consumer key',
+--      consumer_secret = 'Your consumer secret',
+      consumer_key    = '8VWYXTEFSJQME86YGSKPSPMVOKPYKB',
+      consumer_secret = 'OWV1QBSMSVEZJH3XHDNYWB5FKTOQ5S',
    }
    -- Then we query a list of users
    local UsersXml = C:users() 

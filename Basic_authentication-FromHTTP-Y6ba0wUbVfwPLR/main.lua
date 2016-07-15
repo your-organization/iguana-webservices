@@ -3,7 +3,7 @@
 
 -- http://help.interfaceware.com/v6/basic-authentication
 
-basicauth = require 'web.basicauth'
+local basicauth = require 'web.basicauth'
 
 function main(Data)
    iguana.logInfo(Data)

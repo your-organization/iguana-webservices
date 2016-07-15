@@ -1,3 +1,10 @@
+-- The iguana.user module can be helpful if for instance you have a web service for which you need
+-- to authenticate. The module could be fleshed out more but it shows how one can query if a user
+-- belongs to a given group and what their email address is.
+
+-- http://help.interfaceware.com/v6/query-iguana-user-roleemail
+-- http://help.interfaceware.com/v6/webservice-with-permissions
+
 local user = {}
 
 local method = {}

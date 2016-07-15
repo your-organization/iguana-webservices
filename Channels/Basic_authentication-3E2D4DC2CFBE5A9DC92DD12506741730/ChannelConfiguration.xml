@@ -10,8 +10,8 @@
    <from_http
       type="mapper"
       guid="Basic_authentication-FromHTTP-Y6ba0wUbVfwPLR"
-      commit_id="150203730ddf98cccc6d924bf858ee99a0f3f29b"
-      commit_comment="Import Translators: importing baseline latest code"
+      commit_id="ec0e01c90b03dc2356f84846bf4b723e024762a4"
+      commit_comment="adsf"
       mapper_url_path="basicauth/"/>
    <message_filter
       filter_after_logging="false"

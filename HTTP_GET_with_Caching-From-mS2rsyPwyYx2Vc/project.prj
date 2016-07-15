@@ -1,9 +1,7 @@
 {
     "LocalDependencies": [],
     "LuaDependencies": [
-        "iformbuilder.api",
-        "net.http.cache",
-        "oauth.jwt",
+        "net.http.getCached",
         "store2"
     ],
     "OtherDependencies": [],

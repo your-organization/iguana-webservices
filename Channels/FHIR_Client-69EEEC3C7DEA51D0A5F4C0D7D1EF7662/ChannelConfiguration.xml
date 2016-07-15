@@ -9,8 +9,8 @@
    </to_channel>
    <from_mapper
       guid="FHIR_Client-From-LdNyyotcZLUK3z"
-      commit_id="150203730ddf98cccc6d924bf858ee99a0f3f29b"
-      commit_comment="Import Translators: importing baseline latest code"
+      commit_id="dfd9eb0703fa77177fa7ca32b078f04c636b8d62"
+      commit_comment="latest"
       poll_time="10000">
    </from_mapper>
 </channel>

@@ -1,7 +1,7 @@
 <channel
    name="Webservice with Permissions"
    guid="F6D11D7C98419715827100192A63BAEC"
-   description="More advanced example showing how we can build a permission based web service by leveraging Iguana&apos;s built in user permission model.&#xD;&#xA;&#xD;&#xA;The webservice uses basic authentication and checks what groups the user belongs to in order to determine what web services are available."
+   description="More advanced example showing how we can build a permission based web service by leveraging Iguana&apos;s built in user permission model.&#xD;&#xA;&#xD;&#xA;The webservice uses basic authentication and checks what groups the user belongs to in order to determine what web services are available.&#xD;&#xA;&#xD;&#xA;http://help.interfaceware.com/v6/webservice-with-permissions"
    start_automatically="true"
    logging_level="1"
    use_message_filter="false">
@@ -10,8 +10,8 @@
    <from_http
       type="mapper"
       guid="Webservice_with_Permissions-FromHTTP-UkEffwJZbrMRyf"
-      commit_id="150203730ddf98cccc6d924bf858ee99a0f3f29b"
-      commit_comment="Import Translators: importing baseline latest code"
+      commit_id="352c637cbd5a4515c596e68cc4b2f4fd2a6a779b"
+      commit_comment="remove test code"
       mapper_url_path="permission/"/>
    <message_filter
       filter_after_logging="false"
